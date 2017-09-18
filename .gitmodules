@@ -4,3 +4,6 @@
 [submodule "denker_stock_import"]
 	path = denker_stock_import
 	url = https://github.com/humanytek-team/denker_stock_import
+[submodule "hr_job_denker"]
+	path = hr_job_denker
+	url = https://github.com/humanytek-team/hr_job_denker
