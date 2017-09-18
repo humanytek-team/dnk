@@ -7,3 +7,6 @@
 [submodule "hr_job_denker"]
 	path = hr_job_denker
 	url = https://github.com/humanytek-team/hr_job_denker
+[submodule "helpdesk_team_types"]
+	path = helpdesk_team_types
+	url = https://github.com/humanytek-team/helpdesk_team_types
