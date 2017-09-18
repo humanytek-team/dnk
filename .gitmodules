@@ -1,3 +1,6 @@
 [submodule "denker_purchase_import"]
 	path = denker_purchase_import
 	url = https://github.com/humanytek-team/denker_purchase_import
+[submodule "denker_stock_import"]
+	path = denker_stock_import
+	url = https://github.com/humanytek-team/denker_stock_import
