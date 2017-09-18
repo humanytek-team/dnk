@@ -10,3 +10,6 @@
 [submodule "helpdesk_team_types"]
 	path = helpdesk_team_types
 	url = https://github.com/humanytek-team/helpdesk_team_types
+[submodule "hr_employees_assets_denker"]
+	path = hr_employees_assets_denker
+	url = https://github.com/humanytek-team/hr_employees_assets_denker
