@@ -16,3 +16,6 @@
 [submodule "sale_product_delaytime"]
 	path = sale_product_delaytime
 	url = https://github.com/humanytek-team/sale_product_delaytime
+[submodule "validate_picking_qty_done"]
+	path = validate_picking_qty_done
+	url = https://github.com/humanytek-team/validate_picking_qty_done
