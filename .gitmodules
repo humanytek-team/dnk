@@ -19,3 +19,6 @@
 [submodule "validate_picking_qty_done"]
 	path = validate_picking_qty_done
 	url = https://github.com/humanytek-team/validate_picking_qty_done
+[submodule "validate_client_order_ref"]
+	path = validate_client_order_ref
+	url = https://github.com/humanytek-team/validate_client_order_ref
