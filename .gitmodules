@@ -31,3 +31,6 @@
 [submodule "rp_customer_multicompany_ref"]
 	path = rp_customer_multicompany_ref
 	url = https://github.com/humanytek-team/rp_customer_multicompany_ref
+[submodule "acc_customer_destiny_location"]
+	path = acc_customer_destiny_location
+	url = https://github.com/humanytek-team/acc_customer_destiny_location
