@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="product_template_only_form_view_dnk" model="ir.ui.view">
+		<field name="name">product.template.form</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_only_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='options']" position="inside">
+				<div>
+                    <field name="characteristics_ok" />
+                    <label for="characteristics_ok"/>
+                </div>
+			</xpath>
+		</field>
+	</record>
+	
+	
+	<record id="purchase.view_product_supplier_inherit" model="ir.ui.view">
+            <field name="name">product.template.supplier.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <group name="inventory" position="after">
+                    <separator string="Customers"/>
+                    <field name="customer_ids" context="{'default_product_tmpl_id': context.get('product_tmpl_id', active_id)}" >
+                        <tree string="Customers" editable="bottom">
+                            <field name="sequence" widget="handle" />
+                            <field name="name" />
+                            <field name="product_name" />
+                            <field name="product_code" />
+                        </tree>
+                    </field>
+                    <separator string="Vendors"/>
+                    <field name="seller_ids" context="{'default_product_tmpl_id': context.get('product_tmpl_id', active_id)}"/>
+                    <group name="packaging" string="Packaging"
+                        colspan="4"
+                        attrs="{'invisible':[('type', 'not in', ['product', 'consu'])]}"
+                        groups="product.group_stock_packaging">
+                        <field name="packaging_ids" nolabel="1"/>
+                    </group>
+                </group>
+                <field name="uom_po_id" position="after">
+                    <field name="purchase_method" widget="radio" groups="purchase.group_purchase_manager"/>
+                </field>
+                <group name="description" position="after">
+                    <group string="Warning when Purchasing this Product" colspan="2" groups="purchase.group_warning_purchase">
+                        <field name="purchase_line_warn" nolabel="1"/>
+                        <field name="purchase_line_warn_msg" colspan="3" nolabel="1"
+                                attrs="{'required':[('purchase_line_warn','!=','no-message')],'readonly':[('purchase_line_warn','=','no-message')]}"/>
+                    </group>
+                </group>
+                <field name="description_sale" position="after">
+                    <separator string="Description for Vendors" colspan="4"/>
+                    <field name="description_purchase" nolabel="1"
+                        placeholder="This note will be displayed on requests for quotation." colspan="4"/>
+                </field>
+            </field>
+        </record>
+	
+	
+	<record id="product_normal_form_view_dnk" model="ir.ui.view">
+		<field name="name">product.product.form</field>
+		<field name="model">product.product</field>
+		<field name="inherit_id" ref="product.product_normal_form_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='options']" position="inside">
+				<div>
+                    <field name="characteristics_ok" />
+                    <label for="characteristics_ok"/>
+                </div>
+			</xpath>
+		</field>
+	</record>
+	
+	
+</odoo>

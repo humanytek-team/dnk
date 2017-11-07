@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_case_form_view_oppor_pd" model="ir.ui.view">
+        <field name="name">crm.lead.form.opportunity.pd</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_set_won']" position="after">
+                <button string="New DP" name="%(product_development.create_pd_simplified)d" type="action" class="oe_highlight"
+                    context="{'default_opp_id': active_id}"/>
+            </xpath>
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" type="action"
+                        name="%(product_development.pd_opp_action)d" icon="fa-pencil-square-o"
+                        context="{'default_opp_id': active_id}">
+                    <div class="o_stat_info">
+                        <field name="dp_number" class="o_stat_value"/>
+                        <span class="o_stat_text"> DP(s) </span>
+                    </div>
+                </button>
+            </div>
+            <xpath expr="//field[@name='date_deadline']" position="after">
+                <field name="piezas_por_producto" />
+                <field name="precio_por_pieza" />
+            </xpath>
+        </field>
+    </record>
+    
+    
+    
+    
+    
+</odoo>

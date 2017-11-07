@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_pd_stage_tree" model="ir.ui.view">
+         <field name="name">pd.stage.tree</field>
+         <field name="model">pd.stage</field>
+         <field name="arch" type="xml">
+             <tree string="Product Development Stage">
+                 <field name="sequence" widget="handle" />
+                 <field name="name" />
+                 <field name="description" />
+                 <field name="fold"/>
+             </tree>
+         </field>
+     </record>
+     
+     
+     <record id="view_pd_stage_form" model="ir.ui.view">
+         <field name="name">pd.stage.form</field>
+         <field name="model">pd.stage</field>
+         <field name="arch" type="xml">
+             <form string="Product Development Stage" >
+             <sheet>
+                <group>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="fold"/>
+                </group>
+             </sheet>
+             </form>
+         </field>
+     </record>
+     
+     <record model="ir.actions.act_window" id="pd_stage_action">
+            <field name="name">Product Development Stage</field>
+            <field name="res_model">pd.stage</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        <menuitem action="pd_stage_action" id="menu_pd_stage_action" 
+            parent="sale.prod_config_main" sequence="50" />
+            
+    
+    
+    
+    <record id="view_dp_estilo_tree" model="ir.ui.view">
+         <field name="name">dp_estilo.tree</field>
+         <field name="model">dp.form.estilo</field>
+         <field name="arch" type="xml">
+             <tree string="Estilo">
+                 <field name="name" />
+             </tree>
+         </field>
+     </record>
+     
+     
+     <record id="view_dp_estilo_form" model="ir.ui.view">
+         <field name="name">dp_estilo.form</field>
+         <field name="model">dp.form.estilo</field>
+         <field name="arch" type="xml">
+             <form string="Estilo" >
+             <sheet>
+                <group>
+                    <field name="name" />
+                </group>
+             </sheet>
+             </form>
+         </field>
+     </record>
+     
+     <record model="ir.actions.act_window" id="dp_estilo_action">
+            <field name="name">Estilo</field>
+            <field name="res_model">dp.form.estilo</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        <menuitem action="dp_estilo_action" id="menu_dp_estilo_action" 
+            parent="sale.prod_config_main" sequence="60" />
+            
+            
+      
+      <record id="view_dp_aditamentos_tree" model="ir.ui.view">
+         <field name="name">dp_aditamentos.tree</field>
+         <field name="model">dp.form.aditamentos</field>
+         <field name="arch" type="xml">
+             <tree string="Aditamentos">
+                 <field name="name" />
+             </tree>
+         </field>
+     </record>
+     
+     
+     <record id="view_dp_aditamentos_form" model="ir.ui.view">
+         <field name="name">dp_aditamentos.form</field>
+         <field name="model">dp.form.aditamentos</field>
+         <field name="arch" type="xml">
+             <form string="Aditamentos" >
+             <sheet>
+                <group>
+                    <field name="name" />
+                </group>
+             </sheet>
+             </form>
+         </field>
+     </record>
+     
+     <record model="ir.actions.act_window" id="dp_aditamentos_action">
+            <field name="name">Aditamentos</field>
+            <field name="res_model">dp.form.aditamentos</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        <menuitem action="dp_aditamentos_action" id="menu_dp_aditamentos_action" 
+            parent="sale.prod_config_main" sequence="70" />
+    
+    
+     
+    
+	
+	<record id="view_pd_tree" model="ir.ui.view">
+         <field name="name">pd.tree</field>
+         <field name="model">product.development</field>
+         <field name="arch" type="xml">
+             <tree string="Product Development">
+                 <field name="name" />
+                 <field name= "opp_id" />
+                 <field name="family_id"/>
+                 <field name="partner_id"/>
+                 <field name="final_customer_id"/>
+                 <field name="planned_revenue" sum="Total"/>
+                 <field name="contact_name" />
+                 <field name="user_id" />
+                 <field name="stage_id"/>
+             </tree>
+         </field>
+     </record>
+     
+     
+     <record id="view_pd_form" model="ir.ui.view">
+         <field name="name">pd.form</field>
+         <field name="model">product.development</field>
+         <field name="arch" type="xml">
+             <form string="Product Development" >
+             <header>
+                 <field name="stage_id" widget="statusbar" clickable="True" options="{'fold_field': 'fold'}"/>
+             </header>
+             <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_open_attachment" 
+                        type="object" 
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o">
+                        <field name="attachment_count" widget="statinfo" string="AYUDA VISUAL"/>
+                    </button>
+                </div>
+                <field name="dp_form_type" invisible="1"/>
+                <group string="DATOS GENERALES" col="4">
+                     <field name="name" readonly="1"/>
+                     <field name="opp_id" readonly="1"/>
+	                 <field name="family_id" readonly="1" />
+	                 <field name="familysub_id" attrs="{'readonly': [('familysub_id','!=',False)]}" />
+	                 <field name="partner_id" readonly="1"/>
+	                 <field name="final_customer_id" readonly="1"/>
+	                 <field name="planned_revenue" sum="Total" readonly="1"/>
+	                 <field name="contact_name" readonly="1"/>
+	                 <field name="user_id" readonly="1"/>
+	                 <field name="team_id" readonly="1"/>
+                </group>
+                <group col="4">
+                    <field name="nombre" required="1"/>
+                    <field name="req_spec" attrs="{'invisible': [('dp_form_type','=','estatec')]}"/>
+                </group>              
+                <group col="4" >
+                    <field name="date" />
+                    <field name="date_deadline" />
+                 </group>
+                 <group string="SE SOLICITA" >
+                    <group attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                        <field name="request_dib" />
+                        <field name="request_cost" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>
+                        <field name="request_mus" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>    
+                    </group>
+                    <group attrs="{'invisible': [('dp_form_type','=','flexinnova')]}">
+                        <field name="muestra" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}"/>
+                        <field name="costeo" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}"/>    
+                    </group>
+                    <group>
+	                    <field name="pro_code" />
+	                    <field name="lugar_enter" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>
+                    </group> 
+                 </group>
+                 <group col="6" string="SE PROPORCIONA" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="pro_muestra" />
+                    <field name="pro_muestra_com" />
+                    <field name="pro_dibujo" />
+                 </group>
+                 <group attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}" col="4">
+                    <!-- <field name="piezas_opp" /> -->
+                    <field name="piezas_por_opp1" />
+                    <field name="select_1" widget="radio"/>
+                    <!-- <field name="target_price" /> -->
+                    <field name="precio_estimado1" />
+                    <field name="importe_oportunidad1" />
+                </group>
+                <group string="DATOS COMPONENTE" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="peso" />
+                    <field name="ancho" />
+                    <field name="largo" />
+                    <field name="alto" />
+                    <field name="measure_unit" widget="radio"/>
+                    <field name="cuidados_antiestatico" />
+                    <field name="cuidados_disipativo" />
+                    <field name="cuidados_cos" />
+                    <field name="cuidados_abrasividad" />
+                    <field name="func_de_com" />
+                </group>
+                <group string="DATOS PRODUCTO" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="tiempo_esti" widget="radio"/>
+                    <field name="ancho_1" />
+                    <field name="largo_1" />
+                    <field name="alto_1" />
+                    <field name="number_cavidades" />
+                    <field name="ancho_2" />
+                    <field name="largo_2" />
+                    <field name="profundo" />
+                    <field name="measure_unit_1" widget="radio"/>
+                    <field name="contain_ref" />
+                    <field name="req_pue" widget="radio"/>
+                    <field name="estibable" />
+                    <field name="eti_fle" />
+                    <field name="req_inst"/>
+                    <!-- <field name="se_inst_con" widget="radio"/> -->
+                </group>
+                <group string="Detalles" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}">
+                    <group>
+	                    <field name="product_id" domain="[('categ_id','=',familysub_id)]"/>
+	                    <field name="serie" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="estilo" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="albertura" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="altura" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="fuelle" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="caliber" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <field name="piezas_por_opp" />
+	                    <field name="importe_oportunidad" />
+                    </group>
+                    <group>
+	                    <field name="aditamentos" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <label for="um" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+	                    <div invisible="1">
+	                        <field name="um" />
+	                    </div>
+	                    <field name="tiempo_de_consumo" />
+	                    <field name="precio_estimado" />
+                    </group>
+                </group>
+                <group string="Observaciones" col="4" >
+                    <field name="accesorios" />
+                    <field name="observaciones" />
+                </group>
+                <group col="4">
+                    <field name="final_code" />
+                    <field name="des_final_code" />
+                    <field name="rechazado" />
+                    <field name="des_rejectcode" attrs="{'invisible': [('rechazado','=',False)]}"/>
+                </group>
+                
+             </sheet>
+             <div class="oe_chatter">
+                 <field name="message_follower_ids" widget="mail_followers"/>
+                 <field name="message_ids" widget="mail_thread"/>
+             </div>
+             </form>
+         </field>
+     </record>
+     
+     <record id="view_pd_form_simplied" model="ir.ui.view">
+         <field name="name">pd.form.simply</field>
+         <field name="model">product.development</field>
+         <field name="arch" type="xml">
+             <form string="Product Development" >
+             <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_open_attachment" 
+                        type="object" 
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o">
+                        <field name="attachment_count" widget="statinfo" string="AYUDA VISUAL"/>
+                    </button>
+                </div>
+                <field name="dp_form_type" invisible="1"/>
+                <group string="DATOS GENERALES" col="4">
+                     <field name="name" readonly="1"/>
+                     <field name="opp_id" invisible="1"/>
+                     <field name="family_id" readonly="1"/>
+                     <field name="familysub_id" readonly="1" />
+                     <field name="partner_id" readonly="1"/>
+                     <field name="final_customer_id" readonly="1"/>
+                     <field name="planned_revenue" sum="Total" readonly="1"/>
+                     <field name="contact_name" readonly="1"/>
+                     <field name="user_id" readonly="1"/>
+                     <field name="team_id" readonly="1"/>
+                </group>
+                <group col="4">
+                    
+                    <field name="nombre" required="1"/>
+                    <field name="req_spec" attrs="{'invisible': [('dp_form_type','=','estatec')]}"/>
+                </group>                
+                <group col="4" >
+                    <field name="date" />
+                    <field name="date_deadline" />
+                 </group>
+                 <group string="SE SOLICITA" >
+                    <group attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                        <field name="request_dib" />
+                        <field name="request_cost" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>
+                        <field name="request_mus" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>    
+                    </group>
+                    <group attrs="{'invisible': [('dp_form_type','=','flexinnova')]}">
+                        <field name="muestra" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}"/>
+                        <field name="costeo" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}"/>    
+                    </group>
+                    <group>
+                        <field name="pro_code" />
+                        <field name="lugar_enter" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}"/>
+                    </group> 
+                 </group>
+                 <group col="6" string="SE PROPORCIONA" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="pro_muestra" />
+                    <field name="pro_muestra_com" />
+                    <field name="pro_dibujo" />
+                 </group>
+                 <group attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}" col="4">
+                    <!-- <field name="piezas_opp" /> -->
+                    <field name="piezas_por_opp1" />
+                    <field name="select_1" widget="radio"/>
+                    <!-- <field name="target_price" /> -->
+                    <field name="precio_estimado1" />
+                    <field name="importe_oportunidad1" />
+                </group>
+                <group string="DATOS COMPONENTE" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="peso" />
+                    <field name="ancho" />
+                    <field name="largo" />
+                    <field name="alto" />
+                    <field name="measure_unit" widget="radio"/>
+                    <field name="cuidados_antiestatico" />
+                    <field name="cuidados_disipativo" />
+                    <field name="cuidados_cos" />
+                    <field name="cuidados_abrasividad" />
+                    <field name="func_de_com" />
+                </group>
+                <group string="DATOS PRODUCTO" attrs="{'invisible': [('dp_form_type','!=','flexinnova')]}">
+                    <field name="tiempo_esti" widget="radio"/>
+                    <field name="ancho_1" />
+                    <field name="largo_1" />
+                    <field name="alto_1" />
+                    <field name="number_cavidades" />
+                    <field name="ancho_2" />
+                    <field name="largo_2" />
+                    <field name="profundo" />
+                    <field name="measure_unit_1" widget="radio"/>
+                    <field name="contain_ref" />
+                    <field name="req_pue" widget="radio"/>
+                    <field name="estibable" />
+                    <field name="eti_fle" />
+                    <field name="req_inst" />
+                    <!-- <field name="se_inst_con" widget="radio"/> -->
+                </group>
+                <group string="Detalles" attrs="{'invisible': [('dp_form_type','=','flexinnova')]}">
+                    <group>
+                        <field name="product_id" domain="[('categ_id','=',familysub_id)]"/>
+                        <field name="serie" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="estilo" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="albertura" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="altura" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="fuelle" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="caliber" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <field name="piezas_por_opp" />
+                        <field name="importe_oportunidad" />
+                    </group>
+                    <group>
+                        <field name="aditamentos" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <label for="um" attrs="{'invisible': [('dp_form_type','!=','extrupac')]}"/>
+                        <div invisible="1">
+                            <field name="um" />
+                        </div>
+                        <field name="tiempo_de_consumo" />
+                        <field name="precio_estimado" />
+                    </group>
+                </group>
+                <group string="Observaciones" col="4" >
+                    <field name="accesorios" />
+                    <field name="observaciones" />
+                </group>
+                <group col="4">
+                    <field name="final_code" />
+                    <field name="des_final_code" />
+                    <field name="rechazado" />
+                    <field name="des_rejectcode" attrs="{'invisible': [('rechazado','=',False)]}"/>
+                </group>
+             </sheet>
+             <footer>
+		         <button string="Create" name="close_dialog" type="object" class="btn-primary"/>
+		         <button string="Discard" class="btn-default" special="cancel"/>
+		     </footer>
+             </form>
+         </field>
+     </record>
+     
+     
+     <record id="create_pd_simplified" model="ir.actions.act_window">
+            <field name="name">Create Product Development</field>
+            <field name="res_model">product.development</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_pd_form_simplied"/>
+            <field name="target">new</field>
+        </record>
+     
+     
+     
+     <record id="pd_kanban" model="ir.ui.view">
+            <field name="name">pd.kanban</field>
+            <field name="model">product.development</field>
+            <field name="arch" type="xml">
+                <kanban create="0" default_group_by="stage_id" class="o_kanban_small_column o_kanban_product_development">
+                    <field name="stage_id" options='{"group_by_tooltip": {"description": "Stage Description"}}' />
+                    <field name="opp_id" />
+                    <field name="name" />
+                 <field name="family_id"/>
+                 <field name="partner_id"/>
+                 <field name="final_customer_id"/>
+                 <field name="planned_revenue" sum="Total"/>
+                 <field name="contact_name" />
+                 <field name="user_id" />
+                 <field name="color" />
+                 <field name="active" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+
+                                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                        <span class="fa fa-bars fa-lg"/>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+                                        <t t-if="widget.deletable"><li><a type="delete">Delete</a></li></t>
+                                        <li t-if="! record.active.value"><a name="action_set_active" type="object">Unarchive</a></li>
+                                        <li t-if="record.active.value"><a name="action_set_unactive" type="object">Archive</a></li>
+                                        <li><ul class="oe_kanban_colorpicker" data-field="color"/></li>
+                                    </ul>
+                                </div>
+                                <div class="oe_kanban_content">
+                                    <div>
+                                        <strong><field name="name"/>-<field name="opp_id"/></strong>
+                                    </div>
+                                    <div class="text-muted">
+                                        <t t-if="record.planned_revenue.raw_value"><field name="planned_revenue" /><span t-if="record.partner_id.value">,</span></t> <span t-if="record.partner_id.value"> <t t-esc="record.partner_id.value"/></span>
+                                    </div>
+
+                                    <div class="o_kanban_footer">
+                                        <div>
+                                            <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="24" height="24" class="oe_kanban_avatar pull-right"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="oe_clear"></div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        
+        
+        <record model="ir.actions.act_window" id="pd_action">
+            <field name="name">Product Development</field>
+            <field name="res_model">product.development</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+        
+        
+        <record model="ir.actions.act_window" id="pd_opp_action">
+            <field name="name">Product Development</field>
+            <field name="res_model">product.development</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('opp_id', '=', active_id)]</field>
+        </record>
+        
+            
+        <menuitem action="pd_action" id="menu_pd_action" 
+            parent="sales_team.menu_sales" sequence="500" />
+	
+	
+</odoo>

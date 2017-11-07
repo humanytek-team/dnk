@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_dnk" model="ir.ui.view">
+        <field name="name">res.partner.form.dnk</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='sales_purchases']/group/group/field[@name='customer']" position="after">
+                  <field name="is_final_customer" />
+            </xpath>
+            <xpath expr="//field[@name='child_ids']/form/sheet/group/group/field[@name='comment']" position="after">
+                <field name="immex" attrs="{'invisible': [('type','!=','delivery')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='child_ids']/form/sheet/group" position="after">
+                <group string="Datos Mensuales de Importación y Exportación" attrs="{'invisible': [('type','!=','delivery')]}">
+                    <field name="part_inv_line" nolabel="1">
+                        <tree string="Datos Mensuales de Importación y Exportación" editable="bottom">
+                            <field name="name" />
+                            <field name="broker_id" />
+                            <field name="rfc" />
+                            <field name="patent" />
+                            <field name="ex_number" />
+                            <field name="im_number" />
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+    
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_production_mat_mo,mrp.production.mat.mo,mrp.model_mrp_production,group_mrp_mat_add,1,1,1,0
+access_stock_move_mrp_mat_mo,stock.move.mrp_mat.mo,stock.model_stock_move,group_mrp_mat_add,1,1,1,0
+access_sale_order_line_characteristic,access_sale_order_line_characteristic,model_sale_order_line_characteristic,,1,1,1,0
+access_product_customerinfo,access_product_customerinfo,model_product_customerinfo,,1,1,1,0
+access_crm_activity_report_dnk,access_crm_activity_report_dnk,model_crm_activity_report_dnk,,1,1,1,0

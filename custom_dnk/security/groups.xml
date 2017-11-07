@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="group_mrp_mat_add" model="res.groups">
+	        <field name="name">ADD MATERIAL TO ONE MO</field>
+	    </record>
+	    
+	    <record id="group_expedition_validation" model="res.groups">
+            <field name="name">EXPEDITION VALIDATIONS</field>
+        </record>
+        
+</odoo>
